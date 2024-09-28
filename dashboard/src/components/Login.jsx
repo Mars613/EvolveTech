@@ -10,6 +10,7 @@ const Login = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+
   const navigateTo = useNavigate();
 
   const handleLogin = async (e) => {
