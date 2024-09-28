@@ -54,25 +54,23 @@ const Dashboard = () => {
       <section className="dashboard page">
         <div className="banner">
           <div className="firstBox">
-            <img src="/doc.png" alt="docImg" />
+            <img src="/hospital.png" alt="hospitalImg" />
             <div className="content">
               <div>
-                <p>Hello ,</p>
+                <p>Hello,</p>
                 <h5>
-                  {admin &&
-                    `${admin.firstName} ${admin.lastName}`}{" "}
+                  {admin && `${admin.firstName} ${admin.lastName}`}{" "}
                 </h5>
               </div>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Facilis, nam molestias. Eaque molestiae ipsam commodi neque.
-                Assumenda repellendus necessitatibus itaque.
+                Welcome back! Manage all your hospital's appointments and
+                doctors efficiently with our system.
               </p>
             </div>
           </div>
           <div className="secondBox">
             <p>Total Appointments</p>
-            <h3>1500</h3>
+            <h3>{appointments.length || 0}</h3>
           </div>
           <div className="thirdBox">
             <p>Registered Doctors</p>
@@ -125,14 +123,18 @@ const Dashboard = () => {
                           </option>
                         </select>
                       </td>
-                      <td>{appointment.hasVisited === true ? <GoCheckCircleFill className="green"/> : <AiFillCloseCircle className="red"/>}</td>
+                      <td>
+                        {appointment.hasVisited === true ? (
+                          <GoCheckCircleFill className="green" />
+                        ) : (
+                          <AiFillCloseCircle className="red" />
+                        )}
+                      </td>
                     </tr>
                   ))
                 : "No Appointments Found!"}
             </tbody>
           </table>
-
-          {}
         </div>
       </section>
     </>
