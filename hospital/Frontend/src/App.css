@@ -36,8 +36,9 @@
   --spacing-lg: 24px;
   --spacing-xl: 32px;
 
-  --border-radius: 8px;
+  --border-radius: 12px; /* Increased for smoother, modern corners */
   --transition-speed: 0.3s;
+  --transition-speed-fast: 0.2s;
 }
 
 /* Global Styles */
@@ -46,6 +47,7 @@ body {
   background-color: var(--color-background);
   color: var(--color-black);
   line-height: 1.6;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 /* Navbar Styles */
@@ -57,25 +59,8 @@ body {
   padding: 10px 20px;
   position: relative;
   z-index: 100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
 }
-
-/* Align Logo and Text */
-.navbar .logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  width: 100px; /* Adjust size as needed */
-  margin-bottom:  var(--spacing-md);
-}
-
-.nav-links {
-  display: flex;
-  gap: 15px;
-  transition: all var(--transition-speed) ease;
-}
-
 .nav-links a,
 .btn {
   color: var(--color-white);
@@ -88,6 +73,17 @@ body {
 .btn:hover {
   background-color: var(--color-accent);
   color: var(--color-black);
+  transform: translateY(-2px); /* Subtle hover effect */
+}
+/* Align Logo and Text */
+.navbar .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 100px; /* Adjust size as needed */
+  margin-bottom:  var(--spacing-md);
 }
 
 .hamburger {
@@ -118,17 +114,21 @@ body {
 }
 
 /* Hero Section */
+/* Hero Section */
 .hero {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Changed to space-between for better layout */
+  justify-content: space-between;
   padding: var(--spacing-xl);
-  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  background: linear-gradient(145deg, var(--color-primary), var(--color-accent)); /* Diagonal gradient for more dynamism */
   color: var(--color-white);
-  text-align: left; /* Changed for better readability */
-  position: relative;
-  border-radius: var(--border-radius); /* Rounded corners for the hero section */
-  overflow: hidden; /* Prevents overflow of children */
+  text-align: left;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+}
+
+.hero-image:hover {
+  transform: scale(1.05) rotate(1deg); /* Add a slight rotate for added effect */
 }
 
 .hero-title {
@@ -151,9 +151,6 @@ body {
   transition: transform var(--transition-speed); /* Smooth scale effect on hover */
 }
 
-.hero-image:hover {
-  transform: scale(1.05); /* Scale effect on hover */
-}
 /* Biography Styles */
 .biography {
   margin: var(--spacing-lg);
@@ -472,4 +469,39 @@ button:hover {
   object-fit: cover; /* Ensures image covers the area without distortion */
   border-radius: var(--border-radius); /* Rounded corners */
   margin-bottom: 10px; /* Spacing below the image */
+}
+ /* Scoped to the form container only */
+.form-container {
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-black);
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: var(--color-white);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--color-gray);
+  border-radius: var(--border-radius);
+}
+
+.form-container button {
+  padding: 12px 20px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: var(--color-secondary);
 }
