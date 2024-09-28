@@ -31,6 +31,7 @@ const AddNewDoctor = () => {
     "Physical Therapy",
     "Dermatology",
     "ENT",
+    "OPD",
   ];
 
   const handleAvatar = (e) => {
