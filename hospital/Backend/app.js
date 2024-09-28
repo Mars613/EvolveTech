@@ -12,6 +12,7 @@ import appointmentRouter from "./router/appointmentRouter.js";
 const app = express();
 config({ path: "./config/config.env" });
 
+//Connects Frontend with Backend using cors
 app.use(
   cors({
     origin: [process.env.FRONTEND_URL_ONE, process.env.FRONTEND_URL_TWO],
@@ -20,9 +21,9 @@ app.use(
   })
 );
 
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser()); //gets cookies
+app.use(express.json()); //parsers data in json format to string
+app.use(express.urlencoded({ extended: true })); //to recognise all types of data
 
 app.use(
   fileUpload({
@@ -30,7 +31,7 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
-app.use("/api/v1/message", messageRouter);
+app.use("/api/v1/message", messageRouter); 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/appointment", appointmentRouter);
 

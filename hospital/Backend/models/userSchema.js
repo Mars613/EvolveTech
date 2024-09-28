@@ -28,8 +28,8 @@ const userSchema = new mongoose.Schema({
   nic: { //National Identity Card
     type: String,
     required: [true, "NIC is required!"],
-    minLength: [10, "NIC must contain exactly 10 digits!"],
-    maxLength: [10, "NIC must contain exactly 10 digits!"],
+    minLength: [12, "NIC must contain exactly 12 digits!"],
+    maxLength: [12, "NIC must contain exactly 12 digits!"],
   },
   dob: {
     type: Date,
