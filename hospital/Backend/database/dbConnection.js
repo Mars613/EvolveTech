@@ -8,9 +8,9 @@ export const dbConnection = () => {
       dbName: "EvolveTech_Hospital_Management_System",
     })
     .then(() => {
-      console.log("Connected to database!");
+      console.log("EvolveTech Database Connected!");
     })
     .catch((err) => {
-      console.log(`Some error occured while connecting to database:, ${err}`);
+      console.log(`Some error occured while connecting to the database:, ${err}`);
     });
 };

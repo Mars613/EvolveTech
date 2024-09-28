@@ -17,19 +17,19 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, "Email is required!"],
-    validate: [validator.isEmail, "Provide a valid email!"],
+    validate: [validator.isEmail, "Please provide a valid email!"],
   },
   phone: {
     type: String,
     required: [true, "Phone is required!"],
-    minLength: [11, "Phone number must contain exactly 11 digits!"],
-    maxLength: [11, "Phone number must contain exactly 11 digits!"],
+    minLength: [10, "Phone number must contain exactly 10 digits!"],
+    maxLength: [10, "Phone number must contain exactly 10 digits!"],
   },
-  nic: {
+  nic: { //National Identity Card
     type: String,
     required: [true, "NIC is required!"],
-    minLength: [13, "NIC must contain exactly 13 digits!"],
-    maxLength: [13, "NIC must contain exactly 13 digits!"],
+    minLength: [10, "NIC must contain exactly 10 digits!"],
+    maxLength: [10, "NIC must contain exactly 10 digits!"],
   },
   dob: {
     type: Date,
