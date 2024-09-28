@@ -1,0 +1,190 @@
+/* Define CSS Variables for Light and Dark Themes */
+:root {
+  --primary-green: #2f855a;
+  --secondary-green: #68d391;
+  --background-light: #f0fff4;
+  --background-dark: #1a1a1a;
+  --text-light: #2f855a;
+  --text-dark: #68d391;
+  --header-bg-light: #68d391;
+  --header-bg-dark: #1f1f1f;
+  --footer-bg-light: #68d391;
+  --footer-bg-dark: #1f1f1f;
+  --card-bg-light: #ffffff;
+  --card-bg-dark: #2d2d2d;
+  --border-color-light: #2f855a;
+  --border-color-dark: #68d391;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light Theme */
+.light {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+/* Dark Theme */
+.dark {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+/* Header Styles */
+header {
+  background-color: var(--header-bg-light);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.dark header {
+  background-color: var(--header-bg-dark);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  color: white;
+}
+
+/* Navigation Styles */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--secondary-green);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle:hover {
+  color: var(--secondary-green);
+}
+
+/* Footer Styles */
+footer {
+  background-color: var(--footer-bg-light);
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  transition: background-color 0.3s;
+}
+
+.dark footer {
+  background-color: var(--footer-bg-dark);
+}
+
+footer p {
+  margin: 0;
+  color: white;
+}
+
+/* Heading Styles */
+h1, h2 {
+  color: var(--text-light);
+}
+
+.dark h1, .dark h2 {
+  color: var(--text-dark);
+}
+
+/* Product List Styles */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.product-card {
+  background-color: var(--card-bg-light);
+  border: 1px solid var(--border-color-light);
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark .product-card {
+  background-color: var(--card-bg-dark);
+  border-color: var(--border-color-dark);
+  color: white;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  background-color: var(--background-light);
+}
+
+.dark .product-card:hover {
+  background-color: #3a3a3a;
+}
+
+/* Button Styles */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  background-color: var(--primary-green);
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--secondary-green);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  nav ul {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .product-list {
+      flex-direction: column;
+      align-items: center;
+  }
+}
