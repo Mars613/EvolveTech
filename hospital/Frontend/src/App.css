@@ -1,0 +1,475 @@
+/* App.css */
+/* Reset some default browser styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* CSS Variables for Turquoise Color Theme */
+:root {
+  --color-primary: #30d5c8; /* Light Turquoise */
+  --color-secondary: #1b7a76; /* Dark Turquoise */
+  --color-accent: #4dd8d2; /* Bright Turquoise */
+  --color-white: #ffffff;
+  --color-black: #111111;
+  --color-gray: #7f8c8d;
+  --color-light-gray: #e5e5e5;
+  --color-dark-gray: #2c3e50;
+  --color-background: #f9f9f9;
+
+  --font-family: 'Montserrat', sans-serif;
+
+  --fs-small: 14px;
+  --fs-base: 16px;
+  --fs-medium: 18px;
+  --fs-large: 20px;
+  --fs-h1: 36px;
+  --fs-h2: 32px;
+  --fs-h3: 28px;
+  --fs-h4: 24px;
+  --fs-h5: 20px;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+/* Global Styles */
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-black);
+  line-height: 1.6;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-dark-gray);
+  padding: 10px 20px;
+  position: relative;
+  z-index: 100;
+}
+
+/* Align Logo and Text */
+.navbar .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 100px; /* Adjust size as needed */
+  margin-bottom:  var(--spacing-md);
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  transition: all var(--transition-speed) ease;
+}
+
+.nav-links a,
+.btn {
+  color: var(--color-white);
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+.nav-links a:hover,
+.btn:hover {
+  background-color: var(--color-accent);
+  color: var(--color-black);
+}
+
+.hamburger {
+  cursor: pointer;
+  display: none; /* Hidden by default */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 60px; /* Below the navbar */
+    left: 0;
+    right: 0;
+    background-color: var(--color-dark-gray);
+    flex-direction: column;
+    padding: 20px;
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block; /* Show on mobile */
+  }
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Changed to space-between for better layout */
+  padding: var(--spacing-xl);
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  color: var(--color-white);
+  text-align: left; /* Changed for better readability */
+  position: relative;
+  border-radius: var(--border-radius); /* Rounded corners for the hero section */
+  overflow: hidden; /* Prevents overflow of children */
+}
+
+.hero-title {
+  font-size: var(--fs-h1);
+  font-weight: 700; /* Bold for emphasis */
+  margin-bottom: var(--spacing-sm);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+}
+
+.hero-description {
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-image {
+  width: 100%; /* Full width for responsiveness */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: var(--border-radius); /* Rounded corners for the image */
+  transition: transform var(--transition-speed); /* Smooth scale effect on hover */
+}
+
+.hero-image:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+}
+/* Biography Styles */
+.biography {
+  margin: var(--spacing-lg);
+}
+
+.banner {
+  flex: 1; /* Allows banners to take equal space */
+  padding: var(--spacing-md);
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+.biography-content {
+  padding: var(--spacing-lg);
+  background-color: var(--color-light-gray);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.heading-section {
+  margin-bottom: var(--spacing-md);
+}
+
+.intro-text,
+.mission p,
+.closing-text {
+  margin-bottom: var(--spacing-md);
+}
+
+/* Cards for Biography */
+.biography .card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  max-width: 320px;
+  width: 100%;
+}
+
+.biography .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.biography .card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+}
+/* Service List in Biography */
+.services {
+  margin-top: var(--spacing-md);
+}
+
+.service-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+.service-item {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-sm);
+  flex: 1 1 calc(33.333% - var(--spacing-md)); /* Three columns with gaps */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.service-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: var(--spacing-sm);
+  border-radius: 50%;
+}
+
+/* Message Form Styles */
+.message-form-container {
+  max-width: 600px;
+  margin: auto;
+  padding: var(--spacing-lg);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.message-form h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-dark-gray);
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.input-group input,
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 48%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-gray);
+  border-radius: var(--border-radius);
+  font-size: var(--fs-base);
+  transition: border-color var(--transition-speed);
+}
+
+.input-group input:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+textarea {
+  width: 100%;
+  margin-top: var(--spacing-sm);
+  resize: none;
+}
+
+.button-container {
+  margin-top: var(--spacing-md);
+}
+
+button {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--fs-base);
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+button:hover {
+  background-color: var(--color-secondary);
+}
+
+.vector-image {
+  width: 100px; /* Adjust size as needed */
+  margin-top: var(--spacing-lg);
+}
+.vector-container {
+  position: absolute; /* Positioning to enhance layout */
+  bottom: 20px; /* Positioned to fit within the banner */
+  right: 20px; /* Adjust as needed for positioning */
+}
+/* Footer Styles */
+.footer-container {
+  background-color: var(--color-dark-gray);
+  color: var(--color-white);
+  padding: var(--spacing-lg); /* Reduced padding */
+  text-align: left;
+  font-size: var(--fs-base);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-md); /* Reduced margin-bottom */
+}
+
+.quick-links ul,
+.hours ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quick-links li,
+.hours li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.quick-links a {
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.quick-links a:hover {
+  color: var(--color-accent);
+}
+
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-light-gray);
+  padding: var(--spacing-sm) 0;
+}
+
+.contact {
+  margin-top: var(--spacing-md);
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-white);
+}
+
+.contact-info span {
+  margin-left: var(--spacing-sm);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: var(--spacing-md) 0; /* You can also adjust this if needed */
+  border-top: 1px solid var(--color-light-gray);
+  color: var(--color-light-gray);
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* Container for Centering Content */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/* Appointment Styles */
+.appointment-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-title {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-dark-gray);
+}
+
+.appointment-date {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.appointment-details {
+  margin-bottom: var(--spacing-md);
+}
+
+/* Department Styles (Remove Turquoise Background) */
+/* Departments Styles */
+.departments {
+  padding: 50px 20px;
+  background-color: var(--color-light-gray); /* Light background for contrast */
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.departments h2 {
+  color: var(--color-dark-gray);
+  margin-bottom: 30px;
+  text-align: center; /* Center the heading */
+  font-size: var(--fs-h2); /* Use a variable for consistency */
+}
+
+.card {
+  background-color: var(--color-white); /* Card background */
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow for depth */
+  margin: 0 10px; /* Spacing between cards */
+  text-align: center; /* Center content */
+  padding: var(--spacing-md); /* Inner padding */
+  transition: transform var(--transition-speed);
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Hover effect */
+}
+
+.card .depart-name {
+  margin-bottom: 15px; /* Adjusted spacing */
+  background: var(--color-secondary);
+  color: var(--color-white);
+  width: 100%; /* Full width */
+  font-size: var(--fs-medium);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+  border-radius: var(--border-radius);
+}
+
+.card img {
+  width: 100%; /* Responsive image */
+  height: 180px; /* Fixed height */
+  object-fit: cover; /* Ensures image covers the area without distortion */
+  border-radius: var(--border-radius); /* Rounded corners */
+  margin-bottom: 10px; /* Spacing below the image */
+}
