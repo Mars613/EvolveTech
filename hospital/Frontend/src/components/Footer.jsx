@@ -17,7 +17,7 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="footer-content">
         <div className="logo-container">
-          <img src="/Logo.jpg" alt="logo" className="logo-img" />
+          <img src="/Logo.png" alt="logo" className="logo-img" />
         </div>
         <div className="quick-links">
           <h4>Quick Links</h4>
