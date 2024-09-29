@@ -6,7 +6,7 @@ const Appointment = () => {
   return (
     <>
       <Hero
-        title={"Schedule Your Appointment | EvolveTech Medical Institute"}
+        title={"Schedule Your Appointment | Vital Hub Medical Center"}
         imageUrl={"/signin.png"}
       />
       <div className="appointment-container">
