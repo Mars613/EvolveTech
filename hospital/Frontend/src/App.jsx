@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
-import Appointment from "./Pages/Appointment";
+import Appointment from "./pages/Appointment";
 import AboutUs from "./Pages/AboutUs";
 import Register from "./Pages/Register";
 import Footer from "./components/Footer";
@@ -12,10 +12,6 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { Context } from "./main";
 import Login from "./Pages/Login";
-import Telemedicine from "./Pages/Telemedicine"; // Import Telemedicine Page
-import io from "socket.io-client"; // Import Socket.IO client
-
-const socket = io("http://localhost:4000"); // Connect to the Socket.IO server
 
 const App = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
@@ -37,17 +33,6 @@ const App = () => {
       }
     };
     fetchUser();
-
-    // Listen for messages from the server
-    socket.on("message", (data) => {
-      console.log("New message:", data); // Handle incoming messages
-      // You can add logic here to show notifications, etc.
-    });
-
-    // Cleanup on unmount
-    return () => {
-      socket.disconnect();
-    };
   }, [isAuthenticated]);
 
   return (
@@ -61,7 +46,6 @@ const App = () => {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/telemedicine" element={<Telemedicine socket={socket} />} /> {/* Add Telemedicine route */}
           </Routes>
         </div>
         <Footer />
