@@ -26,7 +26,7 @@ const Dashboard = ({ socket }) => {
 
   return (
     <div>
-      <h2>Telemedicine Chat</h2>
+      <h2>Dashboard</h2>
       <div className="chat-window" style={{ height: '300px', overflowY: 'scroll', border: '1px solid #ccc', padding: '10px' }}>
         {messages.map((msg, index) => (
           <div key={index}>{msg}</div>
