@@ -35,6 +35,7 @@ const Navbar = () => {
         <Link to="/" onClick={() => setShow(false)}>Home</Link>
         <Link to="/appointment" onClick={() => setShow(false)}>Appointment</Link>
         <Link to="/about" onClick={() => setShow(false)}>About Us</Link>
+        <Link to="/telemedicine" onClick={() => setShow(false)}>Telemedicine</Link> {/* Add this line */}
         {isAuthenticated ? (
           <button className="btn logout-btn" onClick={handleLogout}>LOGOUT</button>
         ) : (
