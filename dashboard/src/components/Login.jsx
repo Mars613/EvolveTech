@@ -46,7 +46,7 @@ const Login = () => {
     <>
       <section className="container form-component">
         <img src="/logo.png" alt="logo" className="logo"  style={{ width: "500px", height: "auto" }}  />
-        <h1 className="form-title">WELCOME TO VITALHUB</h1>
+        <h1 className="form-title">WELCOME TO VITAL HUB</h1>
         <p>Only Admins Are Allowed To Access These Resources!</p>
         <form onSubmit={handleLogin}>
           <input
