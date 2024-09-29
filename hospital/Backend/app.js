@@ -15,7 +15,7 @@ config({ path: "./config/config.env" });
 //Connects Frontend with Backend using cors
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL_ONE, process.env.FRONTEND_URL_TWO],
+    origin: [process.env.FRONTEND_URL, process.env.FRONTEND_URL],
     method: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
