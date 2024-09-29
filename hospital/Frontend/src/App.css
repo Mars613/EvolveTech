@@ -56,11 +56,25 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: var(--color-dark-gray);
-  padding: 10px 20px;
+  padding: 5px 20px; /* Reduced padding to make the navbar thinner */
   position: relative;
   z-index: 100;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  height: 60px; /* Make the navbar thinner */
 }
+
+/* Logo and Text Alignment */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 50px; /* Adjust the logo height to fit the navbar */
+  width: auto; /* Maintain the aspect ratio */
+  margin-bottom: 0; /* Remove bottom margin for perfect fit */
+}
+
 .nav-links a,
 .btn {
   color: var(--color-white);
@@ -69,28 +83,46 @@ body {
   border-radius: var(--border-radius);
   transition: background-color var(--transition-speed), color var(--transition-speed);
 }
+
 .nav-links a:hover,
 .btn:hover {
   background-color: var(--color-accent);
   color: var(--color-black);
   transform: translateY(-2px); /* Subtle hover effect */
 }
-/* Align Logo and Text */
-.navbar .logo-container {
-  display: flex;
-  align-items: center;
-}
 
-.logo-img {
-  width: 100px; /* Adjust size as needed */
-  margin-bottom:  var(--spacing-md);
-}
-
+/* Mobile Menu (Hamburger) */
 .hamburger {
   cursor: pointer;
-  display: none; /* Hidden by default */
+  display: none; /* Hidden by default, shown on mobile */
 }
 
+/* Show hamburger on smaller screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none; /* Hide links initially on mobile */
+  }
+
+  .nav-links.show {
+    display: flex; /* Show when the menu is toggled */
+    flex-direction: column; /* Stack links vertically */
+    background-color: var(--color-dark-gray);
+    position: absolute;
+    top: 60px; /* Below the navbar */
+    right: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .nav-links a {
+    padding: 15px;
+    text-align: center;
+  }
+}
 /* Responsive Styles */
 @media (max-width: 768px) {
   .nav-links {
