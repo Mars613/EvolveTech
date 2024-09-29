@@ -1,53 +1,83 @@
 // backend/controllers/orderController.js
+
 const Order = require('../models/Order');
-const Medicine = require('../models/Medicine');
 
-// @desc    Create a new order
-// @route   POST /api/orders
-// @access  Private
+// Function to create a new order
 const createOrder = async (req, res) => {
-  const { medicines } = req.body;
-  
-  if (!medicines || medicines.length === 0) {
-    return res.status(400).json({ message: 'No medicines selected' });
-  }
-  
-  let totalAmount = 0;
-  const medicineDetails = [];
-  
-  for (const item of medicines) {
-    const medicine = await Medicine.findById(item.medicine);
-    if (!medicine) {
-      return res.status(404).json({ message: `Medicine not found: ${item.medicine}` });
+    console.log('Request Body:', req.body); // Log the request body for debugging
+
+    const { medicines = [], totalAmount = 0 } = req.body;
+
+    // Validate the medicines array
+    if (!Array.isArray(medicines) || medicines.length === 0) {
+        return res.status(400).json({ 
+            success: false, 
+            message: "No products provided" 
+        });
     }
-    
-    if (medicine.quantityInStock < item.quantity) {
-      return res.status(400).json({ message: `Insufficient stock for ${medicine.name}` });
+
+    // Validate each medicine item for quantity and medicine ID
+    for (const item of medicines) {
+        if (!item.medicine || typeof item.quantity !== 'number' || item.quantity <= 0) {
+            return res.status(400).json({ 
+                success: false, 
+                message: "Invalid medicine data" 
+            });
+        }
     }
-    
-    medicine.quantityInStock -= item.quantity;
-    await medicine.save();
-    
-    totalAmount += medicine.price * item.quantity;
-    medicineDetails.push({ medicine: medicine._id, quantity: item.quantity });
-  }
-  
-  const order = new Order({
-    user: req.user._id,
-    medicines: medicineDetails,
-    totalAmount,
-  });
-  
-  const createdOrder = await order.save();
-  res.status(201).json(createdOrder);
+
+    // Validate the totalAmount
+    if (typeof totalAmount !== 'number' || totalAmount <= 0) {
+        return res.status(400).json({ 
+            success: false, 
+            message: "Invalid total amount" 
+        });
+    }
+
+    try {
+        // Create a new order with the provided data
+        const order = new Order({
+            user: req.user._id, // Get the user ID from the request
+            medicines,
+            totalAmount,
+        });
+
+        // Save the order to the database
+        const createdOrder = await order.save();
+        
+        // Send back a success response
+        res.status(201).json({ 
+            success: true, 
+            message: "Order created successfully", 
+            order: createdOrder 
+        });
+    } catch (error) {
+        console.error('Error creating order:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: "Server error while creating order" 
+        });
+    }
 };
 
-// @desc    Get user orders
-// @route   GET /api/orders
-// @access  Private
+// Function to get orders for the logged-in user (optional)
 const getUserOrders = async (req, res) => {
-  const orders = await Order.find({ user: req.user._id }).populate('medicines.medicine', 'name price');
-  res.json(orders);
+    try {
+        const orders = await Order.find({ user: req.user._id }).populate('medicines.medicine'); // Populate medicine details
+        res.status(200).json({ 
+            success: true, 
+            orders 
+        });
+    } catch (error) {
+        console.error('Error fetching user orders:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: "Server error while fetching orders" 
+        });
+    }
 };
 
-module.exports = { createOrder, getUserOrders };
+module.exports = {
+    createOrder,
+    getUserOrders, // Export the getUserOrders function
+};

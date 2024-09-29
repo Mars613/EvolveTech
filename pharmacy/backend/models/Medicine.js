@@ -1,21 +1,38 @@
-// backend/models/Medicine.js
 const mongoose = require('mongoose');
 
-const medicineSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
+const MedicineSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, 'Please add a medicine name'],
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: [true, 'Please add a description'],
+    },
+    price: {
+      type: Number,
+      required: [true, 'Please add a price'],
+    },
+    quantity: {
+      type: Number,
+      required: [true, 'Please add quantity in stock'],
+      default: 0,
+    },
+    category: {
+      type: String,
+      required: [true, 'Please add a category'],
+      enum: ['Painkiller', 'Antibiotic', 'Vitamin', 'Supplement', 'Other'],
+    },
+    expiryDate: {
+      type: Date,
+      required: [true, 'Please add an expiry date'],
+    },
   },
-  description: String,
-  price: {
-    type: Number,
-    required: true,
-  },
-  quantityInStock: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-}, { timestamps: true });
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model('Medicine', medicineSchema);
+module.exports = mongoose.model('Medicine', MedicineSchema);
