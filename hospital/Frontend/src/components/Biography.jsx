@@ -8,7 +8,6 @@ const Biography = ({ imageUrl }) => {
         {/* Banner Section */}
         <div className="banner">
           <div className="banner-content">
-            <img src={imageUrl} alt="Know more about us" className="banner-img" />
             <h1 className="banner-title">Your Health, Our Priority</h1>
           </div>
         </div>
