@@ -1,13 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-<<<<<<< HEAD
 import Home from "./pages/Home";
-=======
-import Home from "./Pages/Home";
->>>>>>> aa15bbbe2c53150c7b52582418b967f04d07c7ca
 import Appointment from "./pages/Appointment";
-import AboutUs from "./Pages/AboutUs";
+import AboutUs from "./pages/AboutUs";
 import Register from "./Pages/Register";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -15,7 +11,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { Context } from "./main";
-import Login from "./Pages/Login";
+import Login from "./pages/Login";
 
 const App = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
@@ -59,4 +55,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App;

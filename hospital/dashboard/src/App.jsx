@@ -10,11 +10,11 @@ import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "./components/Sidebar";
-import Home from "./Pages/Home"; // Import any other pages you have
+import AddNewAdmin from "./components/AddNewAdmin";
+import "./App.css";
 
 const App = () => {
-  const { isAuthenticated, setIsAuthenticated, admin, setAdmin } =
-    useContext(Context);
+  const { isAuthenticated, setIsAuthenticated, admin, setAdmin } = useContext(Context);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -39,10 +39,10 @@ const App = () => {
     <Router>
       <Sidebar />
       <Routes>
-        <Route path="/" element={<Home />} /> {/* Your main home page */}
-        <Route path="/dashboard" element={<Dashboard />} /> {/* Dashboard route */}
+        <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/doctor/addnew" element={<AddNewDoctor />} />
+        <Route path="/admin/addnew" element={<AddNewAdmin />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/doctors" element={<Doctors />} />
       </Routes>

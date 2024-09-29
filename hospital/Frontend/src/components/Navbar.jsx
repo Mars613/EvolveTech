@@ -26,6 +26,10 @@ const Navbar = () => {
     navigateTo("/login");
   };
 
+  const goToDashboard = () => {
+    window.location.href = "http://localhost:5174"; // Change to new port for dashboard
+  };
+
   return (
     <nav className={`navbar ${show ? 'active' : ''}`}>
       <div className="logo">
@@ -35,7 +39,7 @@ const Navbar = () => {
         <Link to="/" onClick={() => setShow(false)}>Home</Link>
         <Link to="/appointment" onClick={() => setShow(false)}>Appointment</Link>
         <Link to="/about" onClick={() => setShow(false)}>About Us</Link>
-        <Link to="/dashboard" onClick={() => setShow(false)}>Dashboard</Link> {/* Add this line */}
+        <Link to="#" onClick={goToDashboard}>Dashboard</Link> {/* Updated this line */}
         {isAuthenticated ? (
           <button className="btn logout-btn" onClick={handleLogout}>LOGOUT</button>
         ) : (
