@@ -1,7 +1,7 @@
-// src/Pages/Telemedicine.jsx
+// src/Pages/Dashboard.jsx
 import React, { useEffect, useState } from 'react';
 
-const Telemedicine = ({ socket }) => {
+const Dashboard = ({ socket }) => {
   const [messages, setMessages] = useState([]);
   const [messageInput, setMessageInput] = useState("");
 
@@ -39,9 +39,9 @@ const Telemedicine = ({ socket }) => {
         placeholder="Type a message..."
         style={{ width: '80%', marginRight: '5px' }}
       />
-      <button onClick={sendMessage}>Send</button>
+     
     </div>
   );
 };
 
-export default Telemedicine;
+export default Dashboard;
