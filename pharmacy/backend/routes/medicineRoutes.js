@@ -1,11 +1,19 @@
-// backend/routes/medicineRoutes.js
 const express = require('express');
-const { getMedicines, addMedicine } = require('../controllers/medicineCOntroller');
-// const { protect, admin } = require('../middleware/authMiddleware'); // Implement admin middleware if needed
+const {
+  getMedicines,
+  createMedicine,
+  updateMedicine,
+  deleteMedicine,
+} = require('../controllers/medicineCOntroller');
 
 const router = express.Router();
 
+// Public Routes
 router.get('/', getMedicines);
-router.post('/', addMedicine); // Add 'protect, admin' middleware if restricted
+
+// Private/Admin Routes
+router.post('/', createMedicine); // Add a new medicine
+router.put('/:id', updateMedicine); // Update an existing medicine by ID
+router.delete('/:id', deleteMedicine); // Delete a medicine by ID
 
 module.exports = router;

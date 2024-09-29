@@ -31,6 +31,7 @@ const AddNewDoctor = () => {
     "Physical Therapy",
     "Dermatology",
     "ENT",
+    "OPD",
   ];
 
   const handleAvatar = (e) => {
@@ -57,27 +58,24 @@ const AddNewDoctor = () => {
       formData.append("gender", gender);
       formData.append("doctorDepartment", doctorDepartment);
       formData.append("docAvatar", docAvatar);
-
-      const res = await axios.post("http://localhost:4000/api/v1/user/doctor/addnew", formData, {
-        withCredentials: true,
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-
-      toast.success(res.data.message);
-      setIsAuthenticated(true);
-      navigateTo("/");
-      // Reset form fields
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setPhone("");
-      setNic("");
-      setDob("");
-      setGender("");
-      setPassword("");
-      setDoctorDepartment("");
-      setDocAvatar("");
-      setDocAvatarPreview("");
+      await axios
+        .post("http://localhost:4000/api/v1/user/doctor/addnew", formData, {
+          withCredentials: true,
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((res) => {
+          toast.success(res.data.message);
+          setIsAuthenticated(true);
+          navigateTo("/");
+          setFirstName("");
+          setLastName("");
+          setEmail("");
+          setPhone("");
+          setNic("");
+          setDob("");
+          setGender("");
+          setPassword("");
+        });
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -86,17 +84,18 @@ const AddNewDoctor = () => {
   if (!isAuthenticated) {
     return <Navigate to={"/login"} />;
   }
-
   return (
     <section className="page">
       <section className="container add-doctor-form">
-        <img src="/logo.png" alt="logo" className="logo" />
+        <img src="/logo.png" alt="logo" className="logo"/>
         <h1 className="form-title">REGISTER A NEW DOCTOR</h1>
         <form onSubmit={handleAddNewDoctor}>
           <div className="first-wrapper">
             <div>
               <img
-                src={docAvatarPreview ? docAvatarPreview : "/docHolder.jpg"}
+                src={
+                  docAvatarPreview ? `${docAvatarPreview}` : "/docHolder.jpg"
+                }
                 alt="Doctor Avatar"
               />
               <input type="file" onChange={handleAvatar} />
@@ -133,12 +132,15 @@ const AddNewDoctor = () => {
                 onChange={(e) => setNic(e.target.value)}
               />
               <input
-                type="date"
+                type={"date"}
                 placeholder="Date of Birth"
                 value={dob}
                 onChange={(e) => setDob(e.target.value)}
               />
-              <select value={gender} onChange={(e) => setGender(e.target.value)}>
+              <select
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              >
                 <option value="">Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -151,14 +153,18 @@ const AddNewDoctor = () => {
               />
               <select
                 value={doctorDepartment}
-                onChange={(e) => setDoctorDepartment(e.target.value)}
+                onChange={(e) => {
+                  setDoctorDepartment(e.target.value);
+                }}
               >
                 <option value="">Select Department</option>
-                {departmentsArray.map((depart, index) => (
-                  <option value={depart} key={index}>
-                    {depart}
-                  </option>
-                ))}
+                {departmentsArray.map((depart, index) => {
+                  return (
+                    <option value={depart} key={index}>
+                      {depart}
+                    </option>
+                  );
+                })}
               </select>
               <button type="submit">Register New Doctor</button>
             </div>
