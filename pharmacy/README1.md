@@ -67,4 +67,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)  
+
+docker login,images,pull ubuntu,-tag,images help -a,-q,images 0f "dangling=false" / true -q,run ubuntu,docker run --name s -it ubuntu bash
+docker ps , start , stop, pause, unpause, stop, top, stats, rm id
+docker run -t ubuntu
+ps -a, commit id username/test:1,push username/test:1 
+images, docker history image id, code, docker build -t sing
+docker images, history sing, run -it -p 8888.80 sing 
+
